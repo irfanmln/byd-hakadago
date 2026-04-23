@@ -163,27 +163,27 @@ footer{background:var(--dark);color:#fff;padding:56px 80px 100px;}
   <h2>FIND YOUR PERFECT <span>BYD</span></h2>
   <div class="car-grid">
     <a class="car-card" href="seal">
-      <div class="car-img-wrap"><img data-slug="seal" src="" alt="BYD Seal" style="opacity:0;transition:opacity .3s;"></div>
+      <div class="car-img-wrap"><img src="assets/seal-listing.webp" alt=""></div>
       <div class="car-name">BYD SEAL <span>&#x2192;</span></div>
       <div class="car-price">MULAI Rp 599.000.000 IDR</div>
     </a>
     <a class="car-card" href="atto-3">
-      <div class="car-img-wrap"><img data-slug="atto-3" src="" alt="BYD Atto 3" style="opacity:0;transition:opacity .3s;"></div>
+      <div class="car-img-wrap"><img src="assets/atto3-listing.webp" alt=""></div>
       <div class="car-name">BYD ATTO 3 <span>&#x2192;</span></div>
       <div class="car-price">MULAI Rp 479.000.000 IDR</div>
     </a>
     <a class="car-card" href="dolphin">
-      <div class="car-img-wrap"><img data-slug="dolphin" src="" alt="BYD Dolphin" style="opacity:0;transition:opacity .3s;"></div>
+      <div class="car-img-wrap"><img src="assets/dolphin-listing.webp" alt=""></div>
       <div class="car-name">BYD DOLPHIN <span>&#x2192;</span></div>
       <div class="car-price">MULAI Rp 359.000.000 IDR</div>
     </a>
     <a class="car-card" href="m6">
-      <div class="car-img-wrap"><img data-slug="m6" src="" alt="BYD M6" style="opacity:0;transition:opacity .3s;"></div>
+      <div class="car-img-wrap"><img src="assets/m6-listing.webp" alt=""></div>
       <div class="car-name">BYD M6 <span>&#x2192;</span></div>
       <div class="car-price">MULAI Rp 599.000.000 IDR</div>
     </a>
     <a class="car-card" href="atto-1">
-      <div class="car-img-wrap"><img data-slug="atto-1" src="" alt="BYD Atto 1" style="opacity:0;transition:opacity .3s;"></div>
+      <div class="car-img-wrap"><img src="assets/atto1-listing.webp" alt=""></div>
       <div class="car-name">BYD ATTO 1 <span>&#x2192;</span></div>
       <div class="car-price">MULAI Rp 429.000.000 IDR</div>
     </a>
@@ -407,14 +407,6 @@ async function loadDeliveryPhotos(){
 function openLightbox(src){document.getElementById('lbImg').src=src;document.getElementById('lbOverlay').classList.add('open');document.body.style.overflow='hidden';}
 function closeLightbox(){document.getElementById('lbOverlay').classList.remove('open');document.body.style.overflow='';}
 loadDeliveryPhotos();
-async function loadListingImages(){
-  try{
-    const r=await fetch(SB_URL+'/rest/v1/product_images?select=car_slug,img_listing',{headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}});
-    const rows=await r.json();
-    rows.forEach(row=>{if(row.img_listing){const imgs=document.querySelectorAll(`[data-slug="${row.car_slug}"]`);imgs.forEach(img=>{img.src=row.img_listing;img.style.opacity=1;});}
-    });
-  }catch(e){}
-}
-loadListingImages();
+
 </script>
 </body></html>

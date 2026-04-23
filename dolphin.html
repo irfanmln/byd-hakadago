@@ -143,9 +143,8 @@ footer{background:var(--dark);color:#fff;padding:56px 80px 100px;}
   <a href="https://wa.me/6281234567890" target="_blank">HUBUNGI KAMI</a>
 </div>
 <section class="hero">
-  <img class="hero-img" id="heroImg" src="" alt="BYD Dolphin" style="display:none;">
-  <div class="hero-placeholder" id="heroPlaceholder">BYD DOLPHIN</div>
-  <div class="hero-overlay">
+  <img class="hero-img" id="heroImg" src="assets/dolphin-hero.webp" alt="">
+    <div class="hero-overlay">
     <div class="hero-badge">BYD HAKA DAGO</div>
     <div class="hero-name">DOLPHIN</div>
     <div class="hero-tagline">City EV yang Stylish & Efisien</div>
@@ -162,9 +161,8 @@ footer{background:var(--dark);color:#fff;padding:56px 80px 100px;}
 <div class="sec-desc"><p>BYD Dolphin hadir sebagai hatchback listrik yang stylish dan terjangkau. Dengan desain ocean aesthetic yang menawan dan teknologi EV terdepan, Dolphin adalah teman sempurna untuk mobilitas urban sehari-hari.</p></div>
 
 <div class="sec-banner">
-  <img id="exteriorImg" src="" alt="Eksterior BYD Dolphin" style="display:none;">
-  <div class="sec-banner-placeholder" id="exteriorPh">EKSTERIOR</div>
-</div>
+  <img id="exteriorImg" src="assets/dolphin-exterior.webp" alt="">
+  </div>
 
 <div class="sec-2col">
   <div class="col-t">Teknologi &amp; Kenyamanan Terdepan untuk Dolphin</div>
@@ -172,9 +170,8 @@ footer{background:var(--dark);color:#fff;padding:56px 80px 100px;}
 </div>
 
 <div class="sec-banner">
-  <img id="interiorImg" src="" alt="Interior BYD Dolphin" style="display:none;">
-  <div class="sec-banner-placeholder" id="interiorPh">INTERIOR</div>
-</div>
+  <img id="interiorImg" src="assets/dolphin-interior.webp" alt="">
+  </div>
 
 <div class="color-sec">
   <div class="color-sec-title">PILIHAN WARNA</div>
@@ -367,49 +364,7 @@ async function submitKredit(){
   }catch(err){alert('Gagal mengirim. Silakan coba lagi.');btn.disabled=false;btn.textContent='KIRIM PERMINTAAN';}
 }
 
-async function loadImages(){
-  try{
-    const r=await fetch(SB_URL+'/rest/v1/product_images?car_slug=eq.dolphin&select=*',{headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}});
-    const rows=await r.json();
-    if(!rows||!rows.length)return;
-    const d=rows[0];
-    if(d.img_hero){const img=document.getElementById('heroImg');img.src=d.img_hero;img.style.display='block';document.getElementById('heroPlaceholder').style.display='none';}
-    if(d.img_exterior){const img=document.getElementById('exteriorImg');img.src=d.img_exterior;img.style.display='block';document.getElementById('exteriorPh').style.display='none';}
-    if(d.img_interior){const img=document.getElementById('interiorImg');img.src=d.img_interior;img.style.display='block';document.getElementById('interiorPh').style.display='none';}
-  }catch(e){}
-}
-async function loadColors(){
-  try{
-    const r=await fetch(SB_URL+'/rest/v1/color_variants?car_slug=eq.dolphin&order=sort_order,id&select=*',{headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}});
-    const colors=await r.json();
-    if(!colors||!colors.length){document.getElementById('colorLbl').textContent='Hubungi kami untuk info warna.';return;}
-    const main=document.getElementById('colorMain');
-    const lbl=document.getElementById('colorLbl');
-    const sw=document.getElementById('colorSwatches');
-    function selectColor(c,el){
-      main.classList.add('fade');
-      setTimeout(()=>{main.src=c.image_url;main.style.display='block';main.classList.remove('fade');},200);
-      lbl.textContent=c.color_name;
-      sw.querySelectorAll('.color-swatch').forEach(s=>s.classList.remove('active'));
-      el.classList.add('active');
-    }
-    colors.forEach((c,i)=>{
-      const btn=document.createElement('div');
-      btn.className='color-swatch'+(i===0?' active':'');
-      btn.title=c.color_name;
-      const img=new Image();img.src=c.image_url;
-      img.onload=()=>{
-        btn.style.backgroundImage=`url(${c.image_url})`;
-        btn.style.backgroundSize='cover';
-      };
-      img.onerror=()=>{btn.style.background='#ccc';};
-      btn.onclick=()=>selectColor(c,btn);
-      sw.appendChild(btn);
-      if(i===0)selectColor(c,btn);
-    });
-  }catch(e){document.getElementById('colorLbl').textContent='';}
-}
-loadImages();
+
 loadColors();
 </script>
 </body></html>

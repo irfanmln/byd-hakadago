@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dealer Resmi BYD Bandung - BYD Haka Dago</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--red:#E91B21;--red-dark:#c01018;--dark:#0D0D0D;--surface:#1A1A1A;--gray:#666;--white:#fff;}
+body{font-family:'Montserrat',sans-serif;color:var(--dark);overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:var(--white);display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:68px;box-shadow:0 2px 12px rgba(0,0,0,0.08);}
+.nav-logo img{height:38px;width:auto;display:block;}
+.nav-links{display:flex;align-items:center;gap:32px;}
+.nav-links a{font-weight:700;font-size:13px;letter-spacing:0.8px;color:var(--dark);text-transform:uppercase;transition:color 0.2s;}
+.nav-links a:hover{color:var(--red);}
+.nav-ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
+.nav-ham span{display:block;width:24px;height:2px;background:var(--dark);transition:.3s;}
+.nav-mobile{display:none;position:fixed;top:68px;left:0;right:0;background:#fff;z-index:999;box-shadow:0 4px 16px rgba(0,0,0,0.1);padding:16px 0;}
+.nav-mobile a{display:block;padding:14px 24px;font-size:14px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;color:var(--dark);border-bottom:1px solid #f0f0f0;}
+.nav-mobile a:last-child{border-bottom:none;}
+.nav-mobile.open{display:block;}
+.floating-bar{position:fixed;bottom:0;left:0;width:100%;z-index:999;display:flex;}
+.float-btn{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;padding:12px 8px;background:var(--dark);color:white;font-family:'Montserrat',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.5px;text-transform:uppercase;cursor:pointer;border:none;border-right:1px solid rgba(255,255,255,0.15);transition:background 0.2s;}
+.float-btn:last-child{border-right:none;}
+.float-btn:hover{background:var(--red);}
+.float-btn svg{width:22px;height:22px;}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:2000;align-items:center;justify-content:center;padding:16px;}
+.modal-overlay.open{display:flex;}
+.modal{background:white;width:100%;max-width:500px;max-height:90vh;overflow-y:auto;position:relative;padding:40px;border-radius:8px;animation:modalIn 0.25s ease;}
+@keyframes modalIn{from{opacity:0;transform:translateY(-16px);}to{opacity:1;transform:translateY(0);}}
+.modal-close{position:absolute;top:14px;right:16px;width:32px;height:32px;background:#eee;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;color:#333;border:none;transition:background 0.2s;}
+.modal-close:hover{background:#ddd;}
+.modal h2{font-size:22px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:var(--dark);margin-bottom:28px;}
+.form-group{margin-bottom:20px;}
+.form-group label{display:block;font-size:12px;font-weight:700;letter-spacing:0.5px;color:var(--dark);margin-bottom:8px;text-transform:uppercase;}
+.form-group input,.form-group select{width:100%;padding:11px 14px;border:1px solid #ddd;border-radius:5px;font-family:'Montserrat',sans-serif;font-size:14px;outline:none;transition:border-color 0.2s;}
+.form-group input:focus,.form-group select:focus{border-color:var(--red);}
+.submit-btn{width:100%;background:var(--red);color:white;border:none;padding:14px;font-family:'Montserrat',sans-serif;font-weight:700;font-size:13px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;border-radius:5px;transition:background 0.2s;margin-top:4px;}
+.submit-btn:hover{background:var(--red-dark);}
+.submit-btn:disabled{background:#aaa;cursor:not-allowed;}
+.form-success{display:none;text-align:center;padding:24px 0;}
+.form-success .check{font-size:52px;margin-bottom:12px;}
+.form-success h3{font-size:20px;font-weight:800;color:var(--red);}
+.form-success p{color:var(--gray);margin-top:8px;font-size:14px;}
+footer{background:var(--dark);color:#fff;padding:56px 80px 100px;}
+.footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;margin-bottom:32px;}
+.footer-addr p{font-size:13px;color:rgba(255,255,255,0.6);line-height:1.7;}
+.addr-label{font-weight:700;font-size:13px;color:#fff;margin-bottom:4px;}
+.footer-contact h3{font-weight:800;font-size:12px;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px;color:#fff;}
+.contact-item{display:flex;align-items:center;gap:10px;font-size:13px;color:rgba(255,255,255,0.7);margin-bottom:10px;}
+.contact-item svg{width:16px;height:16px;flex-shrink:0;color:var(--red);}
+.footer-map{border-radius:4px;overflow:hidden;height:170px;}
+.footer-map iframe{width:100%;height:100%;border:none;}
+.footer-copy{border-top:1px solid rgba(255,255,255,0.1);padding-top:20px;text-align:center;font-size:12px;color:rgba(255,255,255,0.4);}
+.footer-copy a{color:var(--red);}
+.footer-logo{margin-bottom:20px;}
+.footer-logo img{filter:brightness(0) invert(1);height:32px;}
+.back-top{position:fixed;bottom:80px;right:20px;width:40px;height:40px;background:var(--red);color:white;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:998;opacity:0;transition:opacity 0.3s;font-size:18px;border-radius:4px;}
+.back-top.visible{opacity:1;}
+@media(max-width:640px){
+  nav{padding:0 20px;}
+  .nav-links{display:none;}
+  .nav-ham{display:flex;}
+  footer{padding:40px 20px 100px;}
+  .footer-grid{grid-template-columns:1fr;gap:28px;}
+  .float-btn{font-size:10px;padding:10px 4px;}
+  .float-btn svg{width:20px;height:20px;}
+}
+
+
+.hero{position:relative;width:100%;margin-top:68px;overflow:hidden;background:#000;padding-top:56.25%;}
+.slides{position:absolute;top:0;left:0;width:100%;height:100%;display:flex;transition:transform 0.6s cubic-bezier(.77,0,.18,1);will-change:transform;}
+.slide{min-width:100%;height:100%;flex-shrink:0;position:relative;overflow:hidden;}
+.slide img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block;}
+.slide.slide-placeholder{display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,#0D0D0D 0%,#1A1A1A 50%,#E91B21 100%);}
+.hero-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.1);border:2px solid rgba(255,255,255,0.4);color:white;width:48px;height:48px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:26px;transition:background 0.2s;z-index:10;user-select:none;}
+.hero-arrow:hover{background:rgba(233,27,33,0.6);}
+.hero-arrow.left{left:20px;}
+.hero-arrow.right{right:20px;}
+.hero-dots{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:10;}
+.dot{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,0.4);cursor:pointer;transition:background 0.2s,transform 0.2s;}
+.dot.active{background:#E91B21;transform:scale(1.3);}
+.slide-text{text-align:center;color:white;z-index:1;padding:40px 20px;}
+.slide-sub{font-size:13px;letter-spacing:5px;opacity:0.75;margin-bottom:8px;text-transform:uppercase;font-weight:600;}
+.slide-title{font-size:80px;font-weight:900;text-transform:uppercase;line-height:0.9;margin-bottom:18px;letter-spacing:2px;}
+.slide-price{font-size:17px;opacity:0.85;letter-spacing:1px;font-weight:500;}
+.catalog-section{padding:64px 80px 80px;background:var(--white);}
+.catalog-section h2{font-size:30px;font-weight:900;color:var(--red);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;}
+.catalog-section h2 span{color:var(--dark);}
+.car-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px 28px;}
+.car-card{cursor:pointer;transition:transform 0.2s;text-decoration:none;color:inherit;display:block;}
+.car-card:hover{transform:translateY(-4px);}
+.car-img-wrap{height:155px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:#f8f8f8;border-radius:4px;}
+.car-img-wrap img{width:100%;height:100%;object-fit:contain;transition:transform 0.3s;}
+.car-card:hover .car-img-wrap img{transform:scale(1.05);}
+.car-name{display:flex;align-items:center;justify-content:space-between;font-weight:800;font-size:14px;text-transform:uppercase;padding-top:12px;border-top:2px solid var(--dark);margin-top:10px;letter-spacing:0.5px;}
+.car-price{font-size:12px;color:var(--gray);margin-top:5px;border-top:1px solid #ddd;padding-top:6px;font-weight:500;}
+.why-section{padding:72px 80px;text-align:center;background:#fafafa;}
+.why-section h2{font-size:26px;font-weight:900;letter-spacing:2px;text-transform:uppercase;color:var(--dark);margin-bottom:48px;}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;}
+.why-item h3{font-weight:800;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--red);margin:16px 0 10px;}
+.why-item p{font-size:14px;color:var(--gray);line-height:1.7;}
+.why-icon{font-size:44px;}
+.delivery-section{padding:64px 80px;background:var(--white);}
+.delivery-section h2{font-size:26px;font-weight:900;letter-spacing:2px;text-transform:uppercase;text-align:center;margin-bottom:8px;}
+.delivery-subtitle{text-align:center;font-size:14px;color:#888;margin-bottom:40px;font-weight:500;}
+.delivery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.delivery-item{position:relative;aspect-ratio:4/3;overflow:hidden;border-radius:4px;background:#f0f0f0;cursor:pointer;}
+.delivery-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s;}
+.delivery-item:hover img{transform:scale(1.05);}
+.delivery-empty{grid-column:1/-1;text-align:center;padding:60px 20px;color:#bbb;font-size:14px;}
+.lb-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:9999;align-items:center;justify-content:center;}
+.lb-overlay.open{display:flex;}
+.lb-img{max-width:90vw;max-height:90vh;object-fit:contain;border-radius:4px;}
+.lb-close{position:absolute;top:20px;right:28px;color:#fff;font-size:36px;cursor:pointer;line-height:1;z-index:10000;}
+.cta-banner{position:relative;padding:80px 40px;background:linear-gradient(135deg,#0D0D0D 0%,#1A1A1A 60%,#2a0a0a 100%);text-align:center;}
+.cta-content h2{font-size:30px;font-weight:900;color:white;text-transform:uppercase;letter-spacing:1px;margin-bottom:28px;}
+.cta-btn{display:inline-block;background:var(--red);color:white;font-family:'Montserrat',sans-serif;font-weight:700;font-size:13px;letter-spacing:2px;text-transform:uppercase;padding:14px 40px;cursor:pointer;border:none;transition:background 0.2s,transform 0.2s;}
+.cta-btn:hover{background:var(--red-dark);transform:translateY(-2px);}
+@media(max-width:900px){.car-grid{grid-template-columns:repeat(2,1fr);}.why-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){
+  .slide-title{font-size:48px;}.catalog-section{padding:40px 20px 50px;}
+  .car-grid{grid-template-columns:repeat(2,1fr);gap:16px;}.car-img-wrap{height:110px;}
+  .why-section{padding:48px 20px;}.why-grid{grid-template-columns:1fr 1fr;}
+  .delivery-section{padding:40px 20px;}.delivery-grid{grid-template-columns:1fr 1fr;}
+  .cta-banner{padding:56px 24px;}.cta-content h2{font-size:22px;}
+}
+
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo"><a href="index.html"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/7/73/BYD_Logo.svg/200px-BYD_Logo.svg.png" alt="BYD Haka Dago"></a></div>
+  <div class="nav-links">
+    <a href="index.html">HOME</a>
+    <a href="https://wa.me/6281234567890" target="_blank">HUBUNGI KAMI</a>
+  </div>
+  <div class="nav-ham" onclick="toggleMenu()" id="hamBtn"><span></span><span></span><span></span></div>
+</nav>
+<div class="nav-mobile" id="navMobile">
+  <a href="index.html">HOME</a>
+  <a href="https://wa.me/6281234567890" target="_blank">HUBUNGI KAMI</a>
+</div>
+<section class="hero" id="hero">
+  <div class="slides" id="slides">
+    <div class="slide slide-placeholder">
+      <div class="slide-text">
+        <div class="slide-sub">Dealer Resmi BYD</div>
+        <div class="slide-title">BYD<br>HAKA DAGO</div>
+        <div class="slide-price">Bandung &mdash; Jawa Barat</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-arrow left" onclick="changeSlide(-1)">&#8249;</div>
+  <div class="hero-arrow right" onclick="changeSlide(1)">&#8250;</div>
+  <div class="hero-dots" id="dots"></div>
+</section>
+
+<section class="catalog-section">
+  <h2>FIND YOUR PERFECT <span>BYD</span></h2>
+  <div class="car-grid">
+    <a class="car-card" href="seal">
+      <div class="car-img-wrap"><img data-slug="seal" src="" alt="BYD Seal" style="opacity:0;transition:opacity .3s;"></div>
+      <div class="car-name">BYD SEAL <span>&#x2192;</span></div>
+      <div class="car-price">MULAI Rp 599.000.000 IDR</div>
+    </a>
+    <a class="car-card" href="atto-3">
+      <div class="car-img-wrap"><img data-slug="atto-3" src="" alt="BYD Atto 3" style="opacity:0;transition:opacity .3s;"></div>
+      <div class="car-name">BYD ATTO 3 <span>&#x2192;</span></div>
+      <div class="car-price">MULAI Rp 479.000.000 IDR</div>
+    </a>
+    <a class="car-card" href="dolphin">
+      <div class="car-img-wrap"><img data-slug="dolphin" src="" alt="BYD Dolphin" style="opacity:0;transition:opacity .3s;"></div>
+      <div class="car-name">BYD DOLPHIN <span>&#x2192;</span></div>
+      <div class="car-price">MULAI Rp 359.000.000 IDR</div>
+    </a>
+    <a class="car-card" href="m6">
+      <div class="car-img-wrap"><img data-slug="m6" src="" alt="BYD M6" style="opacity:0;transition:opacity .3s;"></div>
+      <div class="car-name">BYD M6 <span>&#x2192;</span></div>
+      <div class="car-price">MULAI Rp 599.000.000 IDR</div>
+    </a>
+    <a class="car-card" href="atto-1">
+      <div class="car-img-wrap"><img data-slug="atto-1" src="" alt="BYD Atto 1" style="opacity:0;transition:opacity .3s;"></div>
+      <div class="car-name">BYD ATTO 1 <span>&#x2192;</span></div>
+      <div class="car-price">MULAI Rp 429.000.000 IDR</div>
+    </a>
+  </div>
+</section>
+
+<section class="why-section">
+  <h2>KENAPA PILIH BYD HAKA DAGO?</h2>
+  <div class="why-grid">
+    <div class="why-item"><div class="why-icon">&#x26A1;</div><h3>BLADE BATTERY</h3><p>Teknologi baterai pisau BYD terbukti lebih aman, tahan lama, dan efisien dibanding baterai konvensional.</p></div>
+    <div class="why-item"><div class="why-icon">&#x1F4B0;</div><h3>BEBAS BBM</h3><p>Nikmati penghematan biaya bahan bakar hingga 80% dibanding kendaraan konvensional setiap harinya.</p></div>
+    <div class="why-item"><div class="why-icon">&#x1F3C6;</div><h3>GARANSI TERBAIK</h3><p>Garansi baterai 8 tahun / 160.000 km dan garansi kendaraan 6 tahun memberikan ketenangan berkendara.</p></div>
+    <div class="why-item"><div class="why-icon">&#x1F6E1;</div><h3>AFTER SALES TERPERCAYA</h3><p>Didukung jaringan servis resmi BYD Indonesia dengan teknisi terlatih dan spare part original.</p></div>
+  </div>
+</section>
+
+<section class="delivery-section">
+  <h2>GALERI DELIVERY</h2>
+  <p class="delivery-subtitle">Dokumentasi serah terima kendaraan bersama pelanggan kami</p>
+  <div class="delivery-grid" id="deliveryGrid">
+    <div class="delivery-empty">Memuat foto...</div>
+  </div>
+</section>
+
+<div class="lb-overlay" id="lbOverlay" onclick="closeLightbox()">
+  <span class="lb-close" onclick="closeLightbox()">&#x2715;</span>
+  <img class="lb-img" id="lbImg" src="" alt="">
+</div>
+
+<section class="cta-banner">
+  <div class="cta-content">
+    <h2>Segera Rasakan Pengalaman Berkendara Elektrifikasi BYD Bersama Kami.</h2>
+    <button class="cta-btn" onclick="openModal('testDriveModal')">TEST DRIVE SEKARANG</button>
+  </div>
+</section>
+
+<footer id="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/7/73/BYD_Logo.svg/200px-BYD_Logo.svg.png" alt="BYD Haka Dago"></div>
+      <div class="footer-addr">
+        <p class="addr-label">Address</p>
+        <p>Jl. Ir. H. Juanda No.XXX, Dago, Kec. Coblong, Kota Bandung, Jawa Barat 40132</p>
+      </div>
+    </div>
+    <div class="footer-contact">
+      <h3>INFORMASI KONTAK</h3>
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.09 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3 1.2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +62 812-3456-7890
+      </div>
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        info@bydhakadago.com
+      </div>
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        @bydhakadago
+      </div>
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a3.5 3.5 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+        <a href="https://wa.me/6281234567890" target="_blank" style="color:inherit;">+62 812-3456-7890</a>
+      </div>
+    </div>
+    <div class="footer-map">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.0!2d107.6200!3d-6.8900!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sBYD%20Haka%20Dago!5e0!3m2!1sid!2sid!4v1700000000000" allowfullscreen loading="lazy"></iframe>
+    </div>
+  </div>
+  <div class="footer-copy">Copyright &copy; 2026 BYD Haka Dago | Dealer Resmi BYD Bandung</div>
+</footer>
+<div class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#x2191;</div>
+
+<div class="floating-bar">
+  <button class="float-btn" onclick="openModal('testDriveModal')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+    TEST DRIVE
+  </button>
+  <button class="float-btn" onclick="openModal('kreditModal')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+    SIMULASI KREDIT
+  </button>
+  <button class="float-btn" onclick="window.open('https://wa.me/6281234567890','_blank')">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a3.5 3.5 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg>
+    HUBUNGI KAMI
+  </button>
+</div>
+
+<div class="modal-overlay" id="testDriveModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('testDriveModal')">x</button>
+    <h2>TEST DRIVE</h2>
+    <div id="testDriveForm">
+      <div class="form-group"><label>Nama Lengkap</label><input type="text" id="td_nama" placeholder="Nama Anda"></div>
+      <div class="form-group"><label>No HP / WhatsApp</label><input type="tel" id="td_hp" placeholder="+62..."></div>
+      <div class="form-group"><label>Tipe Mobil</label><select id="td_mobil">
+          <option>Seal</option>
+          <option>Atto 3</option>
+          <option>Dolphin</option>
+          <option>M6</option>
+          <option>Atto 1</option>
+      </select></div>
+      <div class="form-group"><label>Tanggal Test Drive</label><input type="date" id="td_hari"></div>
+      <button class="submit-btn" onclick="submitTestDrive()" id="tdBtn">KIRIM PERMINTAAN</button>
+    </div>
+    <div class="form-success" id="testDriveSuccess">
+      <div class="check">&#x2705;</div>
+      <h3>Terima Kasih!</h3>
+      <p>Permintaan Test Drive Anda telah diterima.<br>Tim kami akan segera menghubungi Anda.</p>
+    </div>
+  </div>
+</div>
+<div class="modal-overlay" id="kreditModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('kreditModal')">x</button>
+    <h2>SIMULASI KREDIT</h2>
+    <div id="kreditForm">
+      <div class="form-group"><label>Nama Lengkap</label><input type="text" id="kr_nama" placeholder="Nama Anda"></div>
+      <div class="form-group"><label>No HP / WhatsApp</label><input type="tel" id="kr_hp" placeholder="+62..."></div>
+      <div class="form-group"><label>Tipe Mobil</label><select id="kr_mobil">
+          <option>Seal</option>
+          <option>Atto 3</option>
+          <option>Dolphin</option>
+          <option>M6</option>
+          <option>Atto 1</option>
+      </select></div>
+      <div class="form-group"><label>Tenor</label><select id="kr_tenor">
+        <option>12 Bulan</option><option>24 Bulan</option><option>36 Bulan</option><option>48 Bulan</option><option>60 Bulan</option>
+      </select></div>
+      <div class="form-group"><label>Uang Muka (Rp)</label><input type="number" id="kr_dp" placeholder="Contoh: 50000000"></div>
+      <div class="form-group"><label>Domisili</label><input type="text" id="kr_domisili" placeholder="Contoh: Bandung, Cimahi..."></div>
+      <button class="submit-btn" onclick="submitKredit()" id="krBtn">KIRIM PERMINTAAN</button>
+    </div>
+    <div class="form-success" id="kreditSuccess">
+      <div class="check">&#x2705;</div>
+      <h3>Simulasi Diterima!</h3>
+      <p>Tim kami akan segera menghubungi Anda<br>dengan detail simulasi kredit.</p>
+    </div>
+  </div>
+</div>
+
+<script>
+
+const SB_URL='https://iyfftkcsbrjkhcmwhtsh.supabase.co';
+const SB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml5ZmZ0a2NzYnJqa2hjbXdodHNoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY5NjUyMjAsImV4cCI6MjA5MjU0MTIyMH0.RHZ9EGISDLYulhlCiPTp3rvItfAc5AbVyqTwQmTIUEY';
+function toggleMenu(){document.getElementById('navMobile').classList.toggle('open');}
+document.addEventListener('click',function(e){
+  const mob=document.getElementById('navMobile');const ham=document.getElementById('hamBtn');
+  if(mob&&ham&&!mob.contains(e.target)&&!ham.contains(e.target))mob.classList.remove('open');
+});
+function openModal(id){document.getElementById(id).classList.add('open');document.body.style.overflow='hidden';}
+function closeModal(id){document.getElementById(id).classList.remove('open');document.body.style.overflow='';}
+document.querySelectorAll('.modal-overlay').forEach(m=>{m.addEventListener('click',e=>{if(e.target===m)closeModal(m.id);});});
+window.addEventListener('scroll',()=>{const b=document.getElementById('backTop');if(b)b.classList.toggle('visible',window.scrollY>400);});
+async function submitTestDrive(){
+  const nama=document.getElementById('td_nama').value.trim();
+  const hp=document.getElementById('td_hp').value.trim();
+  const mobil=document.getElementById('td_mobil').value;
+  const hari=document.getElementById('td_hari').value;
+  if(!nama||!hp){alert('Harap isi Nama dan No HP.');return;}
+  const btn=document.getElementById('tdBtn');btn.disabled=true;btn.textContent='Mengirim...';
+  try{
+    await fetch(SB_URL+'/rest/v1/test_drive',{method:'POST',
+      headers:{'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY},
+      body:JSON.stringify({nama,no_hp:hp,tipe_mobil:mobil,tanggal:hari,email:''})
+    });
+    document.getElementById('testDriveForm').style.display='none';
+    document.getElementById('testDriveSuccess').style.display='block';
+  }catch(err){alert('Gagal mengirim. Silakan coba lagi.');btn.disabled=false;btn.textContent='KIRIM PERMINTAAN';}
+}
+async function submitKredit(){
+  const nama=document.getElementById('kr_nama').value.trim();
+  const hp=document.getElementById('kr_hp').value.trim();
+  const mobil=document.getElementById('kr_mobil').value;
+  const tenor=document.getElementById('kr_tenor').value;
+  const dp=document.getElementById('kr_dp').value;
+  const kota=document.getElementById('kr_domisili').value.trim();
+  if(!nama||!hp){alert('Harap isi Nama dan No HP.');return;}
+  const btn=document.getElementById('krBtn');btn.disabled=true;btn.textContent='Mengirim...';
+  try{
+    await fetch(SB_URL+'/rest/v1/simulasi_kredit',{method:'POST',
+      headers:{'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY},
+      body:JSON.stringify({nama,no_hp:hp,tipe_mobil:mobil,tenor,uang_muka:dp?parseInt(dp):null,asal_kota:kota})
+    });
+    document.getElementById('kreditForm').style.display='none';
+    document.getElementById('kreditSuccess').style.display='block';
+  }catch(err){alert('Gagal mengirim. Silakan coba lagi.');btn.disabled=false;btn.textContent='KIRIM PERMINTAAN';}
+}
+
+let current=0,total=1,autoTimer;
+const slidesEl=document.getElementById('slides');
+const dotsEl=document.getElementById('dots');
+function initSlider(){dotsEl.innerHTML='';total=slidesEl.querySelectorAll('.slide').length;for(let i=0;i<total;i++){const d=document.createElement('div');d.className='dot'+(i===0?' active':'');d.onclick=()=>goSlide(i);dotsEl.appendChild(d);}current=0;updateSlider();resetAuto();}
+function updateSlider(){slidesEl.style.transform=`translateX(-${current*100}%)`;document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===current));}
+function changeSlide(dir){current=(current+dir+total)%total;updateSlider();resetAuto();}
+function goSlide(n){current=n;updateSlider();resetAuto();}
+function resetAuto(){clearInterval(autoTimer);autoTimer=setInterval(()=>changeSlide(1),5000);}
+async function loadHeroBanners(){
+  try{
+    const r=await fetch(SB_URL+'/rest/v1/hero_banners?is_active=eq.true&order=sort_order,id&select=*',{headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}});
+    const banners=await r.json();
+    if(!banners||!banners.length){initSlider();return;}
+    slidesEl.innerHTML='';
+    banners.forEach(b=>{const s=document.createElement('div');s.className='slide';const img=document.createElement('img');img.src=b.image_url;img.alt='Banner';s.appendChild(img);slidesEl.appendChild(s);});
+    initSlider();
+  }catch(e){initSlider();}
+}
+loadHeroBanners();
+const heroEl=document.getElementById('hero');
+let startX=0;
+heroEl.addEventListener('touchstart',e=>startX=e.touches[0].clientX,{passive:true});
+heroEl.addEventListener('touchend',e=>{if(Math.abs(startX-e.changedTouches[0].clientX)>50)changeSlide(startX>e.changedTouches[0].clientX?1:-1);});
+async function loadDeliveryPhotos(){
+  const grid=document.getElementById('deliveryGrid');
+  try{
+    const r=await fetch(SB_URL+'/rest/v1/delivery_photos?order=sort_order,id&select=*',{headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}});
+    const rows=await r.json();
+    if(!rows||!rows.length){grid.innerHTML='<div class="delivery-empty">Belum ada foto delivery.</div>';return;}
+    grid.innerHTML=rows.map(p=>`<div class="delivery-item" onclick="openLightbox('${p.image_url}')"><img src="${p.image_url}" alt="Delivery" loading="lazy"></div>`).join('');
+  }catch(e){grid.innerHTML='<div class="delivery-empty">Gagal memuat foto.</div>';}
+}
+function openLightbox(src){document.getElementById('lbImg').src=src;document.getElementById('lbOverlay').classList.add('open');document.body.style.overflow='hidden';}
+function closeLightbox(){document.getElementById('lbOverlay').classList.remove('open');document.body.style.overflow='';}
+loadDeliveryPhotos();
+async function loadListingImages(){
+  try{
+    const r=await fetch(SB_URL+'/rest/v1/product_images?select=car_slug,img_listing',{headers:{'apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY}});
+    const rows=await r.json();
+    rows.forEach(row=>{if(row.img_listing){const imgs=document.querySelectorAll(`[data-slug="${row.car_slug}"]`);imgs.forEach(img=>{img.src=row.img_listing;img.style.opacity=1;});}
+    });
+  }catch(e){}
+}
+loadListingImages();
+</script>
+</body></html>

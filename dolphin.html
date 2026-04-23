@@ -91,16 +91,16 @@ footer{background:var(--dark);color:#fff;padding:56px 80px 100px;}
 .sec-2col{display:grid;grid-template-columns:1fr 1fr;padding:70px 80px;align-items:start;gap:60px;}
 .sec-2col .col-t{font-size:28px;font-weight:800;color:#111;line-height:1.3;}
 .sec-2col .col-d{font-size:15px;line-height:1.9;color:#555;}
-.color-sec{padding:40px 80px 60px;text-align:center;}
-.color-sec-title{font-size:12px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:#888;margin-bottom:28px;}
-.color-main-wrap{position:relative;width:100%;max-width:420px;height:260px;margin:0 auto 10px;}
-.color-main{width:100%;height:100%;object-fit:contain;display:block;transition:opacity .25s ease;}
-.color-main.fade{opacity:0;}
-.color-lbl{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#222;margin-bottom:24px;min-height:18px;transition:opacity .2s;}
-.color-swatches{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;}
-.color-swatch{width:28px;height:28px;border-radius:50%;cursor:pointer;border:2px solid transparent;outline:3px solid transparent;outline-offset:2px;transition:outline-color .2s, transform .15s;flex-shrink:0;}
-.color-swatch:hover{transform:scale(1.15);}
-.color-swatch.active{outline-color:#E91B21;}
+
+
+
+
+
+
+
+
+
+
 .harga-sec{padding:40px 80px 60px;}
 .harga-sec h2{font-size:22px;font-weight:800;margin-bottom:24px;color:#111;}
 .htable{width:100%;border-collapse:collapse;}
@@ -123,15 +123,15 @@ footer{background:var(--dark);color:#fff;padding:56px 80px 100px;}
   .spec-item:nth-child(even){border-right:none;}.spec-item:last-child,.spec-item:nth-last-child(2){border-bottom:none;}
   .sec-desc{padding:40px 20px 0;}.sec-2col{grid-template-columns:1fr;padding:40px 20px;gap:20px;}
   .harga-sec{padding:30px 20px 40px;}.feat-sec{padding:30px 20px 40px;}
-  .feat-grid{grid-template-columns:1fr;}.color-sec{padding:30px 20px 40px;}
-  .color-main-wrap{width:280px;height:180px;}
+  .feat-grid{grid-template-columns:1fr;}
+  
 }
 
 </style>
 </head>
 <body>
 <nav>
-  <div class="nav-logo"><a href="index.html"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/7/73/BYD_Logo.svg/200px-BYD_Logo.svg.png" alt="BYD Haka Dago"></a></div>
+  <div class="nav-logo"><a href="index.html"><img src="assets/logo.svg" alt="BYD Haka Dago"></a></div>
   <div class="nav-links">
     <a href="index.html">HOME</a>
     <a href="https://wa.me/6281234567890" target="_blank">HUBUNGI KAMI</a>
@@ -173,38 +173,7 @@ footer{background:var(--dark);color:#fff;padding:56px 80px 100px;}
   <img id="interiorImg" src="assets/dolphin-interior.webp" alt="">
   </div>
 
-<div class="color-sec">
-  <div class="color-sec-title">PILIHAN WARNA</div>
-  <div class="color-main-wrap"><img class="color-main" id="colorMain" src="" alt="Warna" style="display:none;"></div>
-  <div class="color-lbl" id="colorLbl">Memuat...</div>
-  <div class="color-swatches" id="colorSwatches"></div>
-</div>
 
-<div class="harga-sec">
-  <h2>HARGA OTR BANDUNG</h2>
-  <table class="htable">
-    <thead><tr><th>TIPE</th><th>HARGA OTR</th></tr></thead>
-    <tbody><tr><td>Dolphin Standard</td><td>Rp 359.000.000</td></tr>
-<tr><td>Dolphin Premium</td><td>Rp 399.000.000</td></tr></tbody>
-  </table>
-</div>
-
-<div class="feat-sec">
-  <h2>FITUR UNGGULAN</h2>
-  <div class="feat-grid"><div class="feat-item">Blade Battery 60,48 kWh</div>
-<div class="feat-item">Jangkauan 490 km CLTC</div>
-<div class="feat-item">DiLink 4.0 (12,8" Rotary)</div>
-<div class="feat-item">Ocean Aesthetic Interior Design</div>
-<div class="feat-item">Automatic Emergency Braking</div>
-<div class="feat-item">Lane Departure Warning</div>
-<div class="feat-item">Blind Spot Detection</div>
-<div class="feat-item">Rear Camera</div>
-<div class="feat-item">Smart Key & Keyless Entry</div>
-<div class="feat-item">Wireless Charging</div>
-<div class="feat-item">V2L Support</div>
-<div class="feat-item">Fast Charging 60 kW DC</div>
-<div class="feat-item">OTA Software Update</div></div>
-</div>
 
 <div class="hub-ctr">
   <button class="hub-btn" onclick="openModal('testDriveModal')">TEST DRIVE SEKARANG</button>
@@ -215,7 +184,7 @@ footer{background:var(--dark);color:#fff;padding:56px 80px 100px;}
 <footer id="footer">
   <div class="footer-grid">
     <div>
-      <div class="footer-logo"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/7/73/BYD_Logo.svg/200px-BYD_Logo.svg.png" alt="BYD Haka Dago"></div>
+      <div class="footer-logo"><img src="assets/logo.svg" alt="BYD Haka Dago"></div>
       <div class="footer-addr">
         <p class="addr-label">Address</p>
         <p>Jl. Ir. H. Juanda No.XXX, Dago, Kec. Coblong, Kota Bandung, Jawa Barat 40132</p>
@@ -367,6 +336,5 @@ async function submitKredit(){
 }
 
 
-loadColors();
 </script>
 </body></html>
